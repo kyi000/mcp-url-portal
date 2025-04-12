@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  mcp-url-portal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - TARGET_URL=https://portal.nrich.go.kr/kor/archeologyUsrList.do?menuIdx=567
+      - ALLOW_CORS=true
+    volumes:
+      - ./logs:/app/logs
